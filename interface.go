@@ -27,7 +27,7 @@ type Fetcher interface {
 	// GetBlock returns the block associated with a given key.
 	GetBlock(context.Context, cid.Cid) (blocks.Block, error)
 	GetBlocks(context.Context, []cid.Cid) (<-chan blocks.Block, error)
-	GetBlockWithDataProcessing(ctx context.Context, cid cid.Cid) (blocks.DataProcessedBlock, error)
+	GetBlockWithDataProcessing(ctx context.Context, cid cid.Cid) (blocks.Block, error)
 }
 
 // SessionExchange is an exchange.Interface which supports
