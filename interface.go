@@ -6,6 +6,7 @@ import (
 	"io"
 
 	blocks "github.com/JoaoSilvestre95/go-block-format"
+	dp "github.com/JoaoSilvestre95/go-ipfs-dp"
 	"github.com/ipfs/go-cid"
 )
 
@@ -27,8 +28,8 @@ type Fetcher interface {
 	// GetBlock returns the block associated with a given key.
 	GetBlock(context.Context, cid.Cid) (blocks.Block, error)
 	GetBlocks(context.Context, []cid.Cid) (<-chan blocks.Block, error)
-	GetBlockWithDataProcessing(context.Context, cid.Cid) (blocks.Block, error)
-	GetBlocksWithDataProcessing(context.Context, []cid.Cid) (<-chan blocks.Block, error)
+	GetBlockWithDataProcessing(context.Context, cid.Cid, dp.FunctionCodeBlock) (blocks.Block, error)
+	GetBlocksWithDataProcessing(context.Context, map[cid.Cid]dp.FunctionCodeBlock) (<-chan blocks.Block, error)
 }
 
 // SessionExchange is an exchange.Interface which supports
